@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary main-nav">
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <input class="form-control mr-sm-2" type="search" placeholder="Enter your name (Last, First)" aria-label="Search" name="search">
+    <input [(ngModel)]="params" class="form-control mr-sm-2" type="search" placeholder="Enter your name (Last, First)"
+      aria-label="Search" name="search">
   </div>
 </nav>
 
@@ -13,9 +14,9 @@
   </li>
   <li class="nav-item">
     <button mat-raised-button color="primary">Add Bike Model 3</button>
-    </li>
+  </li>
   <li class="nav-item">
-    <button mat-raised-button color="primary">Checkout</button>
+    <button mat-raised-button color="primary" (click)="computeData()">Checkout</button>
   </li>
 </ul>
 
@@ -26,28 +27,28 @@
         <img class="cover" [src]="bike.image" alt="bike">
         <p>
           <label for="id">ID:</label>
-          <input disabled type="text" class="form-control" placeholder="ID" aria-label="id">
-        </p>  
+          <input disabled type="text" class="form-control" placeholder={{bike.id}} aria-label="id">
+        </p>
         <p>
           <label for="description">Description:</label>
-          <input type="text" class="form-control" placeholder="Description" aria-label="desc"
+          <input type="text" class="form-control" placeholder={{bike.description}} aria-label="desc"
             aria-describedby="basic-addon1">
         </p>
         <p>
           <label for="price">Price</label>
-          <input type="text" class="form-control" placeholder="Price" aria-label="price"
+          <input [(ngModel)]="bike.price" type="text" class="form-control" placeholder={{bike.price}} aria-label="price"
             aria-describedby="basic-addon1">
         </p>
         <p>
           <label for="quantity">Quantity</label>
-          <input type="text" class="form-control" placeholder="Quantity" aria-label="qty"
-            aria-describedby="basic-addon1">
+          <input [(ngModel)]="bike.quantity" type="text" class="form-control" placeholder={{bike.quantity}}
+            aria-label="qty" aria-describedby="basic-addon1">
         </p>
       </mat-card-content>
       <mat-card-actions>
         <div class="btn-group pull-right">
-          <button mat-raised-button color="primary" class="pull-right">Save For Later</button>
-          <button mat-raised-button color="warn">Remove From Cart</button>
+          <button mat-raised-button color="primary" class="pull-right" (click)="saveItems()">Save For Later</button>
+          <button mat-raised-button color="warn" (click)="deleteBike(i)">Remove From Cart</button>
         </div>
       </mat-card-actions>
     </mat-card>
